@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="https://github.com/y0014984/GRAD-Undead/assets/50139270/b2406c9c-d061-4954-a4d2-a1174aac2373.png">
+    <img src="https://github.com/gruppe-adler/GRAD-Undead/assets/50139270/e42e53c3-38fa-49a0-ad43-caca688bcf65.png">
 </p>
 
 <p align="center">
