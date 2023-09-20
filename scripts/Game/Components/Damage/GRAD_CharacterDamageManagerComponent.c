@@ -6,14 +6,26 @@ modded class SCR_CharacterDamageManagerComponent : ScriptedDamageManagerComponen
 	{
 		//PrintFormat("DamageManager OnDamage HitZone: %1 (%4) Damage: %2 Type: %3", pHitZone.GetName(), damage, type, pHitZone.GetHealth());
 		
-		if(GetHealthScaled() < 0.01)
+		ScriptedHitZone scriptedHz = ScriptedHitZone.Cast(pHitZone);
+		if (!scriptedHz)
+			return;
+
+		IEntity hzOwner = scriptedHz.GetOwner();
+		if (!hzOwner)
+			return;
+		
+		if (EntityUtils.IsPlayer(hzOwner))
 		{
-			//PrintFormat("Health HZ reaches 1% threshold: %1", GetHealthScaled());
-			
-			GetDefaultHitZone().SetHealthScaled(0.01);
-			
-			//Print("Set Health to 1%");
+			if(GetDefaultHitZone().GetHealthScaled() < 0.01)
+			{
+				//PrintFormat("Health HZ reaches 1% threshold: %1", GetHealthScaled());
+				
+				GetDefaultHitZone().SetHealthScaled(0.01);
+				
+				//Print("Set Health to 1%");
+			}
 		}
+
 		
 		super.OnDamage(type, damage, pHitZone, instigator, hitTransform, speed, colliderID, nodeID);
 	}

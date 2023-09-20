@@ -4,7 +4,7 @@ TagManager : "{2FA9E172CAB1857A}Prefabs/MP/Managers/TagManager.et" {
 SCR_GameModeEditor GameMode_Editor_Full1 : "{DA3986AF1B5032B7}Prefabs/MP/Modes/Editor/GameMode_Editor_Full.et" {
  coords 1347.369 38 2907.701
  {
-  SCR_FactionManager {
+  SCR_FactionManager "5E68FB652B167D57" {
    ID "56E685E92F1B7E7A"
    Factions {
     SCR_Faction "{56DEAC40D2DBC8B1}" {
@@ -17,6 +17,14 @@ SCR_GameModeEditor GameMode_Editor_Full1 : "{DA3986AF1B5032B7}Prefabs/MP/Modes/E
 StaticModelEntity : "{059125C8BBD5ECED}Prefabs/Compositions/Misc/SubCompositions/Tent_Medical_Cluttered_US_02.et" {
  coords 1270.639 37.438 2943.599
  angleY 0
+}
+SCR_ChimeraCharacter Victim : "{84029128FA6F6BB9}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_GL.et" {
+ coords 1272.562 37.478 2938.938
+ angleY 151.863
+}
+SCR_ChimeraCharacter Medic : "{C9E4FEAF5AAC8D8C}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Medic.et" {
+ coords 1268.79 37.469 2939.037
+ angleY -166.248
 }
 SCR_SpawnPoint : "{CEA2B24051A44525}PrefabsEditable/SpawnPoints/E_SpawnPoint_US.et" {
  coords 1271.471 37.5 2929.641
