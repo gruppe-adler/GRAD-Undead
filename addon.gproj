@@ -1,0 +1,20 @@
+GameProject {
+ ID "GRAD-Undead"
+ GUID "5E68F6FA97DAB5CD"
+ TITLE "GRAD Undead"
+ Dependencies {
+  "58D0FB3206B6F859"
+ }
+ Configurations {
+  GameProjectConfig PC {
+  }
+  GameProjectConfig HEADLESS {
+  }
+  GameProjectConfig XBOX_ONE {
+  }
+  GameProjectConfig XBOX_SERIES {
+  }
+  GameProjectConfig PS4 {
+  }
+ }
+}
