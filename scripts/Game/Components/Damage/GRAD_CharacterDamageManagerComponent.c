@@ -14,6 +14,7 @@ modded class SCR_CharacterDamageManagerComponent : ScriptedDamageManagerComponen
 		if (!hzOwner)
 			return;
 		
+		if (instigator) {
 		if (EntityUtils.IsPlayer(hzOwner))
 		{
 			if(GetDefaultHitZone().GetHealthScaled() < 0.01)
@@ -24,6 +25,7 @@ modded class SCR_CharacterDamageManagerComponent : ScriptedDamageManagerComponen
 				
 				//Print("Set Health to 1%");
 			}
+		}
 		}
 
 		
