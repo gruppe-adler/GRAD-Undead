@@ -4,7 +4,7 @@
 
 <p align="center">
     <a href="https://github.com/y0014984/GRAD-Undead/releases/latest">
-        <img src="https://img.shields.io/badge/Version-1.0.1-blue.svg?style=flat-square" alt="GRAD Undead Version">
+        <img src="https://img.shields.io/badge/Version-1.0.2-blue.svg?style=flat-square" alt="GRAD Undead Version">
     </a>
     <a href="https://www.bistudio.com/community/licenses/arma-public-license-share-alike">
         <img src="https://img.shields.io/badge/License-APL-red.svg?style=flat-square" alt="GRAD Undead License">
@@ -18,6 +18,10 @@ This mod will disable players death. The player stays unconscious. So the teamma
 
 > [!WARNING]
 > Use at your own risk. This mod is only for testing and still under development.
+
+## Features
+- If you deal collision damage like falling from great height your legs get injured
+- if the collision damage is above theshold you will become unconscious for 15 sec.
 
 ## Links
 - Discord: https://discord.com/invite/ZDqp45q
