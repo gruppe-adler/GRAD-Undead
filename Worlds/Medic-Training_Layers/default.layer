@@ -22,6 +22,9 @@ SCR_ChimeraCharacter Victim : "{84029128FA6F6BB9}Prefabs/Characters/Factions/BLU
  coords 1272.562 37.478 2938.938
  angleY 151.863
 }
+GenericEntity : "{BBDBFDFAD5276562}PrefabsEditable/Auto/Rocks/Granite/E_Granite_Boulder_01.et" {
+ coords 1279.681 7.714 2942.254
+}
 SCR_ChimeraCharacter Medic : "{C9E4FEAF5AAC8D8C}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Medic.et" {
  coords 1268.79 37.469 2939.037
  angleY -166.248
