@@ -24,6 +24,7 @@ This mod will disable players death. The player stays unconscious. So the teamma
 - if the collision damage is above theshold you will become unconscious for 15 sec.
 
 ## Links
+- Workshop: https://reforger.armaplatform.com/workshop/5E68F6FA97DAB5CD-GRADUndead
 - Discord: https://discord.com/invite/ZDqp45q
 - Website: https://gruppe-adler.de/home
 - Forum: https://forum.gruppe-adler.de/
