@@ -2,7 +2,7 @@
 modded class SCR_CharacterDamageManagerComponent : ScriptedDamageManagerComponent
 {
 	//-----------------------------------------------------------------------------------------------------------
-	protected override void OnDamage(EDamageType type, float damage, HitZone pHitZone, IEntity instigator, inout vector hitTransform[3], float speed, int colliderID, int nodeID)
+	protected override void OnDamage(EDamageType type, float damage, HitZone pHitZone, notnull Instigator instigator, inout vector hitTransform[3], float speed, int colliderID, int nodeID)
 	{
 		//PrintFormat("DamageManager OnDamage HitZone: %1 (%4) Damage: %2 Type: %3", pHitZone.GetName(), damage, type, pHitZone.GetHealth());
 		
