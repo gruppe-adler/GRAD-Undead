@@ -4,7 +4,7 @@
 
 <p align="center">
     <a href="https://github.com/y0014984/GRAD-Undead/releases/latest">
-        <img src="https://img.shields.io/badge/Version-1.0.2-blue.svg?style=flat-square" alt="GRAD Undead Version">
+        <img src="https://img.shields.io/badge/Version-1.0.6-blue.svg?style=flat-square" alt="GRAD Undead Version">
     </a>
     <a href="https://www.bistudio.com/community/licenses/arma-public-license-share-alike">
         <img src="https://img.shields.io/badge/License-APL-red.svg?style=flat-square" alt="GRAD Undead License">
@@ -28,6 +28,10 @@ This mod will disable players death. The player stays unconscious. So the teamma
 - Discord: https://discord.com/invite/ZDqp45q
 - Website: https://gruppe-adler.de/home
 - Forum: https://forum.gruppe-adler.de/
+
+## Contributors
+- y0014984
+- nomisum
 
 ## License
 GRAD Undead is licensed under the ([APL](https://www.bohemia.net/community/licenses/arma-public-license)).
