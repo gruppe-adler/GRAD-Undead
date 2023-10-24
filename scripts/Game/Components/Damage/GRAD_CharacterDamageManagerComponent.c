@@ -14,7 +14,14 @@ modded class SCR_CharacterDamageManagerComponent : ScriptedDamageManagerComponen
 		if (!hzOwner)
 			return;
 		
-		if (EntityUtils.IsPlayer(hzOwner))
+		int playerId = GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(hzOwner);
+		SCR_PlayerController playerController =  SCR_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId));
+		if (!playerController)
+			return;
+
+		//Print(string.Format("GRAD Undead - isPossessing: %1", playerController.IsPossessing()), LogLevel.NORMAL);
+
+		if (EntityUtils.IsPlayer(hzOwner) && !playerController.IsPossessing())
 		{
 			if(GetDefaultHitZone().GetHealthScaled() < 0.01)
 			{

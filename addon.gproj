@@ -7,14 +7,18 @@ GameProject {
  }
  Configurations {
   GameProjectConfig PC {
-  }
-  GameProjectConfig HEADLESS {
+   DefaultSettings EngineUserSettings "{5702F087A781A9FC}" {
+    VideoUserSettings VideoUserSettings "{B272A67DB18E04F9}" {
+    }
+   }
   }
   GameProjectConfig XBOX_ONE {
   }
   GameProjectConfig XBOX_SERIES {
   }
   GameProjectConfig PS4 {
+  }
+  GameProjectConfig HEADLESS {
   }
  }
 }
