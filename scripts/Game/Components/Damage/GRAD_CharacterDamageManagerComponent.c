@@ -2,7 +2,7 @@
 modded class SCR_CharacterDamageManagerComponent : ScriptedDamageManagerComponent
 {
 	//-----------------------------------------------------------------------------------------------------------
-	protected override void OnDamage(EDamageType type, float damage, HitZone pHitZone, IEntity instigator, inout vector hitTransform[3], float speed, int colliderID, int nodeID)
+	protected override void OnDamage(EDamageType type, float damage, HitZone pHitZone, notnull Instigator instigator, inout vector hitTransform[3], float speed, int colliderID, int nodeID)
 	{
 		//PrintFormat("DamageManager OnDamage HitZone: %1 (%4) Damage: %2 Type: %3", pHitZone.GetName(), damage, type, pHitZone.GetHealth());
 		
@@ -18,9 +18,9 @@ modded class SCR_CharacterDamageManagerComponent : ScriptedDamageManagerComponen
 		SCR_PlayerController playerController =  SCR_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId));
 		if (!playerController)
 			return;
-		
+
 		//Print(string.Format("GRAD Undead - isPossessing: %1", playerController.IsPossessing()), LogLevel.NORMAL);
-		
+
 		if (EntityUtils.IsPlayer(hzOwner) && !playerController.IsPossessing())
 		{
 			if(GetDefaultHitZone().GetHealthScaled() < 0.01)
