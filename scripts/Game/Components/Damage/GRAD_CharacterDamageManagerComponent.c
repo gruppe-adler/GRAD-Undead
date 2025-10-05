@@ -5,19 +5,6 @@ modded class SCR_CharacterDamageManagerComponent : ScriptedDamageManagerComponen
 	protected override void OnDamage(notnull BaseDamageContext damageContext)
 	{
 		//PrintFormat("DamageManager OnDamage HitZone: %1 (%4) Damage: %2 Type: %3", damageContext.struckHitZone.GetName(), damageContext.damageValue, damageContext.damageType, damageContext.struckHitZone.GetHealth());
-		
-		IEntity hzOwner = GetOwner();
-		if (hzOwner && EntityUtils.IsPlayer(hzOwner))
-		{
-			if(GetDefaultHitZone().GetHealthScaled() < 0.01)
-			{
-				//PrintFormat("Health HZ reaches 1% threshold: %1", GetHealthScaled());
-				
-				GetDefaultHitZone().SetHealthScaled(0.01);
-				
-				//Print("Set Health to 1%");
-			}
-		}
 
 		// if damage type is 'collision' which could be for example fall damage
 		// the the damage is also applied on all 6 leg parts to create treatable injuries
@@ -93,5 +80,19 @@ modded class SCR_CharacterDamageManagerComponent : ScriptedDamageManagerComponen
 		}
 		
 		super.OnDamage(damageContext);
+		
+		// Prevent death by clamping health to minimum 1% after all damage processing
+		IEntity hzOwner = GetOwner();
+		if (hzOwner && EntityUtils.IsPlayer(hzOwner))
+		{
+			if(GetDefaultHitZone().GetHealthScaled() < 0.01)
+			{
+				//PrintFormat("Health HZ reaches 1% threshold after damage: %1", GetDefaultHitZone().GetHealthScaled());
+				
+				GetDefaultHitZone().SetHealthScaled(0.01);
+				
+				//Print("Set Health to 1% after damage");
+			}
+		}
 	}
 };

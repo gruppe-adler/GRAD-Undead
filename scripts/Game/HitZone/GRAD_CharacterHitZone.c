@@ -6,6 +6,8 @@ modded class SCR_RegeneratingHitZone : ScriptedHitZone
 	{
 		//PrintFormat("HitZone OnDamage HitZone (Direct): %1 (%4) Damage: %2 Type: %3", damageContext.struckHitZone.GetName(), damageContext.damageValue, damageContext.damageType, damageContext.struckHitZone.GetHealth());
 
+		super.OnDamage(damageContext);
+		
 		IEntity hzOwner = GetOwner();
 		if (hzOwner && EntityUtils.IsPlayer(hzOwner))
 		{
@@ -18,7 +20,5 @@ modded class SCR_RegeneratingHitZone : ScriptedHitZone
 				//Print("Set Health to 1%");
 			}
 		}
-		
-		super.OnDamage(damageContext);
 	}
 };
