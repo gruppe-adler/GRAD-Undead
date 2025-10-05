@@ -2,19 +2,12 @@
 modded class SCR_CharacterDamageManagerComponent : ScriptedDamageManagerComponent
 {
 	//-----------------------------------------------------------------------------------------------------------
-	protected override void OnDamage(EDamageType type, float damage, HitZone pHitZone, notnull Instigator instigator, inout vector hitTransform[3], float speed, int colliderID, int nodeID)
+	protected override void OnDamage(notnull BaseDamageContext damageContext)
 	{
-		//PrintFormat("DamageManager OnDamage HitZone: %1 (%4) Damage: %2 Type: %3", pHitZone.GetName(), damage, type, pHitZone.GetHealth());
+		//PrintFormat("DamageManager OnDamage HitZone: %1 (%4) Damage: %2 Type: %3", damageContext.struckHitZone.GetName(), damageContext.damageValue, damageContext.damageType, damageContext.struckHitZone.GetHealth());
 		
-		ScriptedHitZone scriptedHz = ScriptedHitZone.Cast(pHitZone);
-		if (!scriptedHz)
-			return;
-
-		IEntity hzOwner = scriptedHz.GetOwner();
-		if (!hzOwner)
-			return;
-		
-		if (EntityUtils.IsPlayer(hzOwner))
+		IEntity hzOwner = GetOwner();
+		if (hzOwner && EntityUtils.IsPlayer(hzOwner))
 		{
 			if(GetDefaultHitZone().GetHealthScaled() < 0.01)
 			{
@@ -29,61 +22,67 @@ modded class SCR_CharacterDamageManagerComponent : ScriptedDamageManagerComponen
 		// if damage type is 'collision' which could be for example fall damage
 		// the the damage is also applied on all 6 leg parts to create treatable injuries
 		
-		if (type == EDamageType.COLLISION)
+		if (damageContext.damageType == EDamageType.COLLISION)
 		{
 			array<HitZone> hitZones = {};
 			GetAllHitZones(hitZones);
 			
-			foreach (HitZone hitZone : hitZones)
+			foreach (HitZone hz : hitZones)
 			{
 				float fallDamage;
 				
-				switch (hitZone.GetName())
+				switch (hz.GetName())
 				{
 					case "RThigh":
-						fallDamage = damage * 0.1;
+						fallDamage = damageContext.damageValue * 0.1;
 						break;
 					case "LThigh":
-						fallDamage = damage * 0.1;
+						fallDamage = damageContext.damageValue * 0.1;
 						break;
 					case "RCalf":
-						fallDamage = damage * 0.3;
+						fallDamage = damageContext.damageValue * 0.3;
 						break;
 					case "LCalf":
-						fallDamage = damage * 0.3;
+						fallDamage = damageContext.damageValue * 0.3;
 						break;
 					case "RFoot":
-						fallDamage = damage * 0.1;
+						fallDamage = damageContext.damageValue * 0.1;
 						break;
 					case "LFoot":
-						fallDamage = damage * 0.1;
+						fallDamage = damageContext.damageValue * 0.1;
 						break;
 					default:
 						break;
 				}
 				
-				float health = hitZone.GetHealth();
+				float health = hz.GetHealth();
 				
 				float newHealth = health - fallDamage;
 				
 				if (newHealth <= 0)
-					hitZone.SetHealthScaled(0.01);
+					hz.SetHealthScaled(0.01);
 				else
-					hitZone.SetHealth(newHealth);
+					hz.SetHealth(newHealth);
 				
 				// if the collision damage is above threshold then
 				// the character gets unconscious for a certain amount of time
 				
 				// a damage of 25 is equal to a fall from a height of roughly 8-10 meters
-				if (damage > 25)
+				if (damageContext.damageValue > 25)
 				{
 					ChimeraCharacter character = ChimeraCharacter.Cast(GetOwner());
 					if (!character)
+					{
+						super.OnDamage(damageContext);
 						return;
+					}
 					
 					CharacterControllerComponent controller = character.GetCharacterController();
 					if (!controller)
+					{
+						super.OnDamage(damageContext);
 						return;
+					}
 		
 					controller.SetUnconscious(true);
 					
@@ -93,6 +92,6 @@ modded class SCR_CharacterDamageManagerComponent : ScriptedDamageManagerComponen
 			}
 		}
 		
-		super.OnDamage(type, damage, pHitZone, instigator, hitTransform, speed, colliderID, nodeID);
+		super.OnDamage(damageContext);
 	}
 };
