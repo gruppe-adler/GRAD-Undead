@@ -81,17 +81,21 @@ modded class SCR_CharacterDamageManagerComponent : ScriptedDamageManagerComponen
 		
 		super.OnDamage(damageContext);
 		
-		// Prevent death by clamping health to minimum 1% after all damage processing
+		// Prevent death by clamping ALL hit zones to minimum 1% after all damage processing
 		IEntity hzOwner = GetOwner();
 		if (hzOwner && EntityUtils.IsPlayer(hzOwner))
 		{
-			if(GetDefaultHitZone().GetHealthScaled() < 0.01)
+			// Clamp all hit zones to prevent death
+			array<HitZone> allHitZones = {};
+			GetAllHitZones(allHitZones);
+			
+			foreach (HitZone hz : allHitZones)
 			{
-				//PrintFormat("Health HZ reaches 1% threshold after damage: %1", GetDefaultHitZone().GetHealthScaled());
-				
-				GetDefaultHitZone().SetHealthScaled(0.01);
-				
-				//Print("Set Health to 1% after damage");
+				if (hz.GetHealthScaled() < 0.01)
+				{
+					//PrintFormat("Clamping hitzone %1 from %2 to 1%%", hz.GetName(), hz.GetHealthScaled());
+					hz.SetHealthScaled(0.01);
+				}
 			}
 		}
 	}
